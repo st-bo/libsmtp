@@ -1,0 +1,6 @@
+*.db
+*.opendb
+.git/
+.vs/
+Debug/
+Release/

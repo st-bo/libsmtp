@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{6ef9b3a2-f082-491b-a98d-63f84b457f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{9cc7fe62-5e32-41a9-859d-295bf9eb434f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Network">
+      <UniqueIdentifier>{6509fc01-2ea2-40f0-b41f-48beb50618cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Network\Smtp">
+      <UniqueIdentifier>{aaddca24-c280-408f-9523-6c8696a1a4bf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Network\Smtp.h">
+      <Filter>include\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Smtp\Client.h">
+      <Filter>include\Network\Smtp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Smtp\Command.h">
+      <Filter>include\Network\Smtp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Smtp\Connection.h">
+      <Filter>include\Network\Smtp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Defs.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Client.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Connection.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Smtp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
