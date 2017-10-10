@@ -20,16 +20,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Defs.h" />
-    <ClInclude Include="include\Network\Smtp.h" />
+    <ClInclude Include="include\Network\Smtp\Address.h" />
     <ClInclude Include="include\Network\Smtp\Client.h" />
     <ClInclude Include="include\Network\Smtp\Command.h" />
     <ClInclude Include="include\Network\Smtp\Connection.h" />
+    <ClInclude Include="include\Network\Smtp\Response.h" />
+    <ClInclude Include="include\Network\Smtp\Status.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp" />
-    <ClCompile Include="Command.cpp" />
-    <ClCompile Include="Connection.cpp" />
-    <ClCompile Include="Smtp.cpp" />
+    <ClCompile Include="src\Address.cpp" />
+    <ClCompile Include="src\Client.cpp" />
+    <ClCompile Include="src\Command.cpp" />
+    <ClCompile Include="src\Connection.cpp" />
+    <ClCompile Include="src\Response.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CD32A3CD-D424-49DF-BFF9-A2160F6E3574}</ProjectGuid>
@@ -108,8 +111,9 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include;C:\Boost\include\boost-1_65_1</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

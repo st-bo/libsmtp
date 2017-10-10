@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 #ifndef NEWLINE
 #define NEWLINE "\n"
 #endif // !NEWLINE

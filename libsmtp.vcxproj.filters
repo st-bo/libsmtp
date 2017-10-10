@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Network\Smtp.h">
-      <Filter>include\Network</Filter>
-    </ClInclude>
     <ClInclude Include="include\Network\Smtp\Client.h">
       <Filter>include\Network\Smtp</Filter>
     </ClInclude>
@@ -30,18 +27,30 @@
     <ClInclude Include="include\Defs.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\Network\Smtp\Response.h">
+      <Filter>include\Network\Smtp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Smtp\Status.h">
+      <Filter>include\Network\Smtp</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Network\Smtp\Address.h">
+      <Filter>include\Network\Smtp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp">
+    <ClCompile Include="src\Response.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
+    <ClCompile Include="src\Address.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Connection.cpp">
+    <ClCompile Include="src\Client.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Smtp.cpp">
+    <ClCompile Include="src\Command.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Connection.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
