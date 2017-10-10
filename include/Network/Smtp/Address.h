@@ -6,11 +6,6 @@ namespace Network {
 
 	namespace Smtp {
 
-		enum Status {
-			Ok,
-			Fail
-		};
-
 		class SmtpAddress {
 
 		public:
@@ -25,10 +20,7 @@ namespace Network {
 			std::string _email;
 		};
 
-		typedef struct Response_ {
-			std::string bytes;
-			Status      status;
-		} Response;
+
 
 	} // NS Smtp
 
