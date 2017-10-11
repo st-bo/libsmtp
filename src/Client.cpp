@@ -18,7 +18,11 @@ namespace Network {
 		
 		class SmtpClientImpl {
 		public:
-			SmtpClientImpl(const std::string& host, const std::string& port, int timeout);
+			SmtpClientImpl(const std::string& host,
+				const std::string& port, 
+				int connectTimeout, 
+				int sendTimeout, 
+				int recieveTimeout);
 
 			void sendMail(const SmtpAddress from,
 				const std::vector<SmtpAddress>& vec_to,
@@ -27,27 +31,47 @@ namespace Network {
 
 		private:
 			SmtpConnection* _conn;
+			int _connectTimeout;
+			int	_sendTimeout;
+			int _recieveTimeout;
 
 			const Response communicate(SmtpCommand cmd) const;
 
 		};
 
 
-		SmtpClient::SmtpClient(const std::string& host, const std::string& port, int timeout) {
-			_impl = new SmtpClientImpl(host, port, timeout);
+		SmtpClient::SmtpClient(const std::string& host,
+			const std::string& port,
+			int connTimeout, 
+			int sndTimeout, 
+			int rcvTimeout) {
+			_impl = new SmtpClientImpl(host, port, connTimeout, sndTimeout, rcvTimeout);
 		}
 
-		void SmtpClient::sendMail(const SmtpAddress from, const std::vector<SmtpAddress>& vec_to, const std::string& subject, const std::string& body) const {
+		void SmtpClient::sendMail(const SmtpAddress from, 
+			const std::vector<SmtpAddress>& vec_to, 
+			const std::string& subject, 
+			const std::string& body) const {
 			if (_impl) {
 				_impl->sendMail(from, vec_to, subject, body);
 			}
 		}
 			
-		SmtpClientImpl::SmtpClientImpl(const std::string& host, const std::string& port, int timeout) {
-			_conn = new SmtpConnection(host, port, timeout);
+		SmtpClientImpl::SmtpClientImpl(const std::string& host, 
+			const std::string& port, 
+			int connTimeout, 
+			int sndTimeout, 
+			int rcvTimeout) {
+			_connectTimeout = connTimeout;
+			_sendTimeout = sndTimeout;
+			_recieveTimeout = rcvTimeout;
+			_conn = new SmtpConnection(host, port);
 		}
 
-		void SmtpClientImpl::sendMail(const SmtpAddress from, const std::vector<SmtpAddress>& vec_to, const std::string& subject, const std::string& body) const {
+		void SmtpClientImpl::sendMail(const SmtpAddress from, 
+			const std::vector<SmtpAddress>& vec_to, 
+			const std::string& subject, 
+			const std::string& body) const {
 				
 			// build a Mime Mail Message (bytes) - Mime Header list + plain text body
 			// current date
@@ -81,7 +105,7 @@ namespace Network {
 			mail << body;
 
 			// socket setup
-			_conn->connect();
+			_conn->connect(_connectTimeout);
 
 			// smtp dialog
 			communicate(HeloCommand(_conn->hostname()));
@@ -101,8 +125,8 @@ namespace Network {
 			// send command
 			// recieve response bytes (payload)
 			// return parsed response
-			_conn->send(cmd.toString());
-			return parseResponse(_conn->recieve());
+			_conn->send(_sendTimeout, cmd.toString());
+			return parseResponse(_conn->recieve(_recieveTimeout));
 		}			
 
 	} // NS Smtp

@@ -13,7 +13,11 @@ namespace Network {
 		
 		class SmtpClient {
 		public:
-			SmtpClient(const std::string& host, const std::string& port, int timeout);
+			SmtpClient(const std::string& host, 
+				const std::string& port, 
+				int connectTimeout, 
+				int sendTimeout, 
+				int recieveTimeout);
 			
 			void sendMail(const SmtpAddress from, 
 				const std::vector<SmtpAddress>& vec_to, 
